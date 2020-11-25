@@ -3,7 +3,9 @@ package com.thoughtworks.collection;
 import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MyMap {
 
@@ -17,14 +19,19 @@ public class MyMap {
     }
 
     public List<Integer> getTriple() {
-        throw new NotImplementedException();
+        List<Integer> list = this.array.stream()
+                .map(item -> item * 3).collect(Collectors.toList());
+        return list;
     }
 
     public List<String> mapLetter() {
-        throw new NotImplementedException();
+        List<String> list = this.array.stream()
+                .map(item -> letters[this.array.indexOf(item)]).collect(Collectors.toList());
+        return list;
     }
 
     public List<Integer> sortFromBig() {
-        throw new NotImplementedException();
+        List<Integer> list = this.array.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        return list;
     }
 }
